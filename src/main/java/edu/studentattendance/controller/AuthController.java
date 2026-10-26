@@ -2,6 +2,7 @@ package edu.studentattendance.controller;
 
 import edu.studentattendance.dto.LoginRequest;
 import edu.studentattendance.dto.LoginResponse;
+import edu.studentattendance.dto.RegistrationRequest;
 import edu.studentattendance.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public LoginResponse login(@Valid @RequestBody LoginRequest request) { return authService.login(request); }
+
+    @PostMapping("/register")
+    public LoginResponse register(@Valid @RequestBody RegistrationRequest request) {
+        return authService.register(request);
+    }
 
     @GetMapping("/me")
     public Map<String, String> me(Authentication authentication) {
